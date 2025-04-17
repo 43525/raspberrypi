@@ -53,12 +53,39 @@ Hold the `CTRL` and `ALT` keys on your keyboard and press the `F2` key to switch
 
 ### :star: my summary
 try this:
-- `$ sudo raspi-config`
-- `$ ls -larth`
-- to check system info:
-   - `$ cat /etc/os-release`
-- to check cpu and board type
-   - `$ cat /etc/os-release`
+* `$ sudo raspi-config`
+* `$ ls -larth`
+* `find / -name example.txt`: Searches the whole system for the file example.txt and outputs a list of all directories that contain the file.
+* `nano example.txt`: Opens the file example.txt in the Linux text editor Nano.
+* `df /`: Shows how much free disk space is available.
+* `poweroff`: To shutdown immediately.
+* `raspi-config`: Opens the configuration settings menu.
+* `reboot`: To reboot immediately.
+* `shutdown`-h now: To shutdown immediate
+* `free`: Shows how much free memory is available.
+* `hostname -I`: Shows the IP address of your Raspberry Pi.
+
+ref: https://www.circuitbasics.com/useful-raspberry-pi-commands/
+
+* To check OS, and version
+``` console
+pi@raspberrypi:~ $ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+NAME="Debian GNU/Linux"
+VERSION_ID="12"
+VERSION="12 (bookworm)"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+pi@raspberrypi:~ $ ^C
+pi@raspberrypi:~ $ cat /proc/version
+Linux version 6.12.20+rpt-rpi-v8 (serge@raspberrypi.com) (aarch64-linux-gnu-gcc-12 (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40) #1 SMP PREEMPT Debian 1:6.12.20-1+rpt1~bpo12+1 (2025-03-19)
+pi@raspberrypi:~ $ 
+```
+* to check cpu and board type
+   - `$ cat /proc/cpuinfo`
 ``` console
 ...
 Model		: Raspberry Pi 4 Model B Rev 1.5
@@ -216,6 +243,6 @@ Please reboot your Raspberry Pi to complete the installation.
 pi@raspberrypi:~/Freenove/Code $ 
 ```
 #### reboot `$ sudo reboot`
-
+#### shutdown `$ poweroff`
 
 ----
