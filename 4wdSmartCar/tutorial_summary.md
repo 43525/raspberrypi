@@ -6,6 +6,9 @@ Tutorial Summary
 FNK0043 get tutorial
 http://freenove.com/fnk0043
 
+Github: 
+https://github.com/Freenove/Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi
+
 ### Raspberry Pi OS
 Pg28
 - www.raspberry.org/downloads/   >  Installed Raspberry Pi Imager
@@ -242,7 +245,49 @@ Updated /boot/firmware/config.txt with 'dtoverlay=ov5647'
 Please reboot your Raspberry Pi to complete the installation.
 pi@raspberrypi:~/Freenove/Code $ 
 ```
+
+## Chapter 3 Module test
+* S1: Power main switch
+* S2: Motor and servo power switch
+### Motor
+Adjust servor head before assemble
+``` console
+pi@raspberrypi:~/Freenove/Code/Server $ sudo python servo.py
+Now servos will rotate to 90 degree.
+If they have already been at 90 degree, nothing will be observed.
+Please keep the program running when installing the servos.
+After that, you can press ctrl-C to end the program.
+^C
+End of program
+```
+#### Wheel test
+``` console
+pi@raspberrypi:~/Freenove/Code/Server $ sudo python test.py Motor
+Program is starting ...
+The car is moving forward
+The car is going backwards
+The car is turning left
+The car is turning right
+
+End of program
+pi@raspberrypi:~/Freenove/Code/Server $
+```
+But it travel reversed
+
+Edit motor.py
+``` py
+    def set_motor_model(self, duty1, duty2, duty3, duty4):
+        duty1,duty2,duty3,duty4=self.duty_range(duty1,duty2,duty3,duty4)
+        self.left_upper_wheel(-duty1)
+        self.left_lower_wheel(-duty2)
+        self.right_upper_wheel(-duty3)
+        self.right_lower_wheel(-duty4)
+```
+
+---
+Quick reference
+#### login `$ ssh pi@192.168.3.110` and password
 #### reboot `$ sudo reboot`
-#### shutdown `$ poweroff`
+#### shutdown `$ sudo poweroff`
 
 ----
