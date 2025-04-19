@@ -284,6 +284,70 @@ Edit motor.py
         self.right_lower_wheel(-duty4)
 ```
 
+### ADC Module
+If place on the white floor
+``` console
+pi@raspberrypi:~/Freenove/Code/Server $ sudo python test.py ADC
+Program is starting ... 
+Program is starting ...
+The photoresistor voltage on the left is 2.2V
+The photoresistor voltage on the right is 2.03V
+The battery voltage is 7.41V
+
+
+The photoresistor voltage on the left is 2.21V
+The photoresistor voltage on the right is 2.03V
+The battery voltage is 7.4399999999999995V
+```
+### LED
+``` console
+pi@raspberrypi:~/Freenove/Code/Server $ cat params.json
+{
+    "Connect_Version": 2,
+    "Pcb_Version": 2,
+    "Pi_Version": 1
+}
+pi@raspberrypi:~/Freenove/Code/Server $ sudo python test.py Led
+Program is starting ...
+The LED has been lit, the color is red orange yellow green cyan-blue blue white
+
+End of program
+pi@raspberrypi:~/Freenove/Code/Server $
+```
+
+### Camera - issue
+``` console
+pi@raspberrypi:~/Freenove/Code/Server $ sudo nano /boot/firmware/config.txt
+pi@raspberrypi:~/Freenove/Code/Server $
+```
+/boot/firmware/config.txt
+```
+# Automatically load overlays for detected cameras
+camera_auto_detect=1
+```
+
+``` console
+pi@raspberrypi:~/Freenove/Code/Server $ python camera.py
+Program is starting ...
+[0:00:49.239912802] [1905]  INFO Camera camera_manager.cpp:327 libcamera v0.4.0+53-29156679
+[0:00:49.266242950] [1908]  WARN RPiSdn sdn.cpp:40 Using legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[0:00:49.268461505] [1908]  INFO RPI vc4.cpp:447 Registered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media2 and ISP device /dev/media0
+[0:00:49.268582302] [1908]  INFO RPI pipeline_base.cpp:1121 Using configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[0:00:49.276178505] [1905]  INFO Camera camera.cpp:1202 configuring streams: (0) 640x480-XBGR8888 (1) 640x480-SGRBG10_CSI2P
+[0:00:49.276665228] [1908]  INFO RPI vc4.cpp:622 Sensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 640x480-SGRBG10_1X10 - Selected unicam format: 640x480-pgAA
+View image...
+qt.qpa.xcb: could not connect to display
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx, xcb.
+
+Aborted
+pi@raspberrypi:~/Freenove/Code/Server $ ls *.jpg
+ls: cannot access '*.jpg': No such file or directory
+pi@raspberrypi:~/Freenove/Code/Server $
+```
+
 ---
 Quick reference
 #### login `$ ssh pi@192.168.3.110` and password
